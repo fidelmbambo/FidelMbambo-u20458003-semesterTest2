@@ -1,0 +1,20 @@
+{
+"type": "FeatureCollection",
+"name": "Food_Stall",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "Location": "Piazza" }, "geometry": { "type": "Point", "coordinates": [ 28.231428551990348, -25.754444817030368 ] } },
+{ "type": "Feature", "properties": { "fid": 2, "Location": "Zoology Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.230873803286318, -25.754110054881384 ] } },
+{ "type": "Feature", "properties": { "fid": 3, "Location": "Old College Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.230079938761587, -25.753612693974322 ] } },
+{ "type": "Feature", "properties": { "fid": 4, "Location": "Merensky Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.230720769161071, -25.755276940086411 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "Location": "Aula Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.228826971861103, -25.753402272052103 ] } },
+{ "type": "Feature", "properties": { "fid": 6, "Location": "SSC Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.231418987357522, -25.755898641220238 ] } },
+{ "type": "Feature", "properties": { "fid": 7, "Location": "IT Building Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.233274526126173, -25.755678654665193 ] } },
+{ "type": "Feature", "properties": { "fid": 8, "Location": "EMS Building Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.233341478555968, -25.755544749805598 ] } },
+{ "type": "Feature", "properties": { "fid": 9, "Location": "Centenary Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.232882376180221, -25.754205701209663 ] } },
+{ "type": "Feature", "properties": { "fid": 10, "Location": "Law Building Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.234297941838779, -25.754444817030368 ] } },
+{ "type": "Feature", "properties": { "fid": 11, "Location": "Thuto Building Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.231686797076708, -25.752904911145045 ] } },
+{ "type": "Feature", "properties": { "fid": 12, "Location": "Chemistry Building Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.230682510629755, -25.752962298942013 ] } },
+{ "type": "Feature", "properties": { "fid": 13, "Location": "Prosect Entrance Stall" }, "geometry": { "type": "Point", "coordinates": [ 28.232461532335783, -25.752484067300603 ] } }
+]
+}

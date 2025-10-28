@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>UP Hatfield 3D Map</title>
+
+  <!-- CesiumJS -->
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.134/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.134/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <link lef ="stylesheet" href="style.css">
+
+</head>
+<body>
+<div id="cesiumContainer"></div>
+
+<script type="module">
+Cesium.Ion.defaultAccessToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiMzViMGI2YS05MGI4LTQ0YjgtYTEzMS00MGY4YjhmNzc5YTAiLCJpZCI6MzI5NjU4LCJpYXQiOjE3NTQ1NTUyMTJ9.hhMVPWwFZttUCOe2-z2iol-eQm_TF2eI5sBCuR1DqZw';
+
+// Create Viewer with terrain
+const viewer = new Cesium.Viewer("cesiumContainer", {
+  terrain: Cesium.Terrain.fromWorldTerrain(),
+  baseLayerPicker: true,
+  geocoder: false,
+  timeline: false,
+  animation: false
+});
+
+// Fly to Hatfield Campus
+viewer.camera.flyTo({
+  destination: Cesium.Cartesian3.fromDegrees(28.2314, -25.7550, 300),
+  orientation: {
+    heading: Cesium.Math.toRadians(0),
+    pitch: Cesium.Math.toRadians(-35)
+  }
+});
+
+// Load 3D Buildings
+Cesium.GeoJsonDataSource.load("Buildings.geojson").then((dataSource) => {
+  viewer.dataSources.add(dataSource);
+
+  const entities = dataSource.entities.values;
+  for (let entity of entities) {
+    if (entity.polygon) {
+      //FIXED HERE — bracket notation for property name with space
+      const height = entity.properties["Building Height"]
+        ? entity.properties["Building Height"].getValue()
+        : 10;
+
+      entity.polygon.height = 0;
+      entity.polygon.extrudedHeight = height;
+      entity.polygon.heightReference = Cesium.HeightReference.CLAMP_TO_GROUND;
+      entity.polygon.extrudedHeightReference =
+        Cesium.HeightReference.RELATIVE_TO_GROUND;
+
+      //Buildings solid green with black outline
+      entity.polygon.material = Cesium.Color.GREEN.withAlpha(1.0);
+      entity.polygon.outline = true;
+      entity.polygon.outlineColor = Cesium.Color.BLACK;
+    }
+  }
+});
+
+// Load remaining 2D  as 3D models
+const otherLayers = [
+  "Compost_Bins.geojson",
+  "Food_Stall.geojson",
+];
+
+for (const file of otherLayers) {
+  Cesium.GeoJsonDataSource.load(file, { clampToGround: true })
+    .then((dataSource) => {
+      const entities = dataSource.entities.values;
+
+      if (file === "Food_Stall.geojson") {
+        for (let entity of entities) {
+          if (entity.position) {
+            entity.point = new Cesium.PointGraphics({
+              pixelSize: 6, //smaller point size
+              color: Cesium.Color.RED,
+              heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+            });
+          }
+        }
+      }
+      if (file === "Compost_Bins.geojson") {
+        for (let entity of entities) {
+          if (entity.position) {
+            entity.point = new Cesium.PointGraphics({
+              pixelSize: 6, //smaller point size
+              color: Cesium.Color.BLUE,
+              heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+            });
+          }
+        }
+      }
+      viewer.dataSources.add(dataSource);
+    });
+}
+</script>
+</body>
+</html>
