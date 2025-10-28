@@ -1,0 +1,174 @@
+html, body, #cesiumContainer {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#infoBox h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+        .popup {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            max-width: 300px;
+            z-index: 1000;
+        }
+
+.control-panel {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+/* Hide legacy large control panel if still present */
+.control-panel { display: none !important; }
+
+.route-toggles {
+    margin: 10px 0;
+}
+
+.route-toggles label {
+    display: block;
+    margin: 5px 0;
+}
+
+.route-info {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.route-info h4 {
+    margin: 0 0 5px 0;
+}
+
+/* Compact route button panel */
+.button-panel {
+    position: absolute;
+    top: 80px; /* Move below header */
+    left: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 5px;
+}
+
+.button-panel button {
+    background: rgba(255,255,255,0.95);
+    border: 1px solid #cfcfcf;
+    padding: 6px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    min-width: 36px;
+    height: 32px;
+}
+
+.button-panel .route-btn.active {
+    background: #0078d4;
+    color: #ffffff;
+    border-color: #005a9e;
+}
+
+.button-panel button:hover {
+    transform: translateY(-1px);
+    transition: transform 120ms;
+}
+
+/* ensure popup doesn't get overlapped by buttons */
+.popup { right: 10px; top: 10px; max-width: 280px; }
+
+.path-btn {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 4px;
+}
+
+.path-btn.active {
+    background: #0078d4;
+    color: white;
+    border-color: #005a9e;
+}
+
+/* Header Styles */
+.app-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Adjusted width to leave space for Cesium tools */
+    width: calc(100% - 200px); /* Increased right margin */
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 20px;
+}
+
+.header-content {
+    max-width: 100%;
+    margin: 0;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app-header .subtitle {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Ensure Cesium container stays full screen */
+#cesiumContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Adjust other control positions */
+.button-panel {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 5px;
+}
+
+.popup {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    max-width: 300px;
+    z-index: 1000;
+}

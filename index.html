@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>UP Hatfield 3D Map</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.134/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.134/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">  
+</head>
+<body>
+    <!-- Add header bar -->
+    <header class="app-header">
+        <div class="header-content">
+            <h1>UP Hatfield Campus 3D Map</h1>
+            <p class="subtitle">UP Zero Hunger Drive</p>
+        </div>
+    </header>
+
+    <div id="cesiumContainer"></div>
+    <div id="featurePopup" class="popup"></div>
+    
+    <!-- Path visibility controls -->
+    <div id="pathControls" class="button-panel" aria-label="Path controls">
+        <button id="togglePaths" class="path-btn" title="Toggle All Paths">All Paths</button>
+        <button id="stallPaths" class="path-btn" title="Show Stall Connections">Stall Routes</button>
+    </div>
+    
+    <script type="module" src="main.js"></script>
+</body>
+</html>
